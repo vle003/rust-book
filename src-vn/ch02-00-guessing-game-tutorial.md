@@ -1,20 +1,13 @@
 # Viết một trò chơi Giải đoán
 
-Hãy bắt đầu với Rust bằng cách cùng nhau thực hiện một dự án thực hành! Chương này giới thiệu cho bạn một số khái niệm Rust phổ biến bằng cách hướng dẫn bạn cách sử dụng
-chúng trong một chương trình thực tế. Bạn sẽ tìm hiểu về `let`, `match`, các phương thức, các hàm đi kèm, các crate, và nhiều hơn nữa! Trong các chương tiếp theo, chúng ta sẽ khám phá
-những ý tưởng này một cách chi tiết hơn. Trong chương này, bạn sẽ chỉ thực hành các
-nguyên tắc cơ bản.
+Hãy bắt đầu với Rust bằng cách cùng nhau thực hiện một dự án thực hành! Chương này giới thiệu cho bạn một số khái niệm Rust phổ biến bằng cách hướng dẫn bạn cách sử dụng chúng trong một chương trình thực tế. Bạn sẽ tìm hiểu về `let`, `match`, các phương thức, các hàm đi kèm, các crate, và nhiều hơn nữa! Trong các chương tiếp theo, chúng ta sẽ khám phá
+những ý tưởng này một cách chi tiết hơn. Trong chương này, bạn sẽ chỉ thực hành các nguyên tắc cơ bản.
 
-Chúng ta sẽ thực hiện một bài toán lập trình cổ điển dành cho người mới bắt đầu: một trò chơi Giải đoán. Đây là
-cách thức hoạt động: chương trình sẽ tạo ra một số nguyên ngẫu nhiên trong khoảng từ 1 đến 100. Sau đó nó
-sẽ nhắc người chơi nhập dự đoán. Sau khi dự đoán được nhập,
-chương trình sẽ cho biết dự đoán quá thấp hay quá cao. Nếu dự đoán là
-đúng, game sẽ in thông báo chúc mừng và thoát ra.
+Chúng ta sẽ thực hiện một bài toán lập trình cổ điển dành cho người mới bắt đầu: một trò chơi Giải đoán. Đây là cách thức hoạt động: chương trình sẽ tạo ra một số nguyên ngẫu nhiên trong khoảng từ 1 đến 100. Sau đó nó sẽ nhắc người chơi nhập dự đoán. Sau khi dự đoán được nhập, chương trình sẽ cho biết dự đoán quá thấp hay quá cao. Nếu dự đoán là đúng, trò sẽ in thông báo chúc mừng và thoát ra.
 
 ## Thiết lập Dự án Mới
 
-Để thiết lập một dự án mới, hãy chuyển đến thư mục *projects* mà bạn đã tạo trong
-Chương 1 và tạo một dự án mới bằng Cargo, như sau:
+Để thiết lập một dự án mới, hãy chuyển đến thư mục *projects* mà bạn đã tạo trong Chương 1 và tạo một dự án mới bằng Cargo, như sau:
 
 ```console
 $ cargo new guessing_game
@@ -49,24 +42,19 @@ Như bạn đã thấy trong Chương 1, `cargo new` tạo ra một chương tr�
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/no-listing-01-cargo-new/src/main.rs}}
 ```
 
-Bây giờ hãy biên dịch chương trình "Hello, world!" và chạy nó trong cùng một bước
-sử dụng lệnh `cargo run`:
+Bây giờ hãy biên dịch chương trình "Hello, world!" và chạy nó trong cùng một bước sử dụng lệnh `cargo run`:
 
 ```console
 {{#include ../listings/ch02-guessing-game-tutorial/no-listing-01-cargo-new/output.txt}}
 ```
 
-Lệnh `run` có ích khi bạn cần duyệt nhanh một dự án,
-như chúng ta sẽ làm trong trò chơi này, kiểm tra nhanh từng lần trước khi chuyển sang
-cái tiêp theo.
+Lệnh `run` có ích khi bạn cần duyệt nhanh một dự án, như chúng ta sẽ làm trong trò chơi này, kiểm tra nhanh từng lần trước khi chuyển sang cái tiêp theo.
 
 Mở lại tệp *src/main.rs*. Bạn sẽ viết tất cả mã trong tệp này.
 
 ## Xử lý trò chơi Dự Đoán
 
-Phần đầu tiên của chương trình trò chơi đoán sẽ yêu cầu người dùng nhập liệu, xử lý
-đầu vào đó và kiểm tra xem đầu vào có ở dạng dự kiến hay không. Để bắt đầu, chúng ta sẽ
-cho phép người chơi nhập dự đoán. Nhập mã trong Liệt kê 2-1 vào tệp *src/main.rs*.
+Phần đầu tiên của chương trình trò chơi đoán sẽ yêu cầu người dùng nhập liệu, xử lý đầu vào đó và kiểm tra xem đầu vào có ở dạng dự kiến hay không. Để bắt đầu, chúng ta sẽ cho phép người chơi nhập dự đoán. Nhập mã trong Liệt kê 2-1 vào tệp *src/main.rs*.
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -76,21 +64,15 @@ cho phép người chơi nhập dự đoán. Nhập mã trong Liệt kê 2-1 và
 
 <span class="caption">Listing 2-1: Chương trình sẽ nhận một dự đoán từ người dùng và in nó ra</span>
 
-Mã này chứa rất nhiều thông tin, vì vậy hãy xem qua từng dòng một. Để 
-lấy đầu vào từ người dùng và sau đó in kết quả dưới dạng đầu ra, chúng ta cần dùng
-thư viện xuất/nhập `io`. Thư viện `io` đến từ thư viện tiêu chuẩn, được gọi là `std`:
+Mã này chứa rất nhiều thông tin, vì vậy hãy xem qua từng dòng một. Để lấy đầu vào từ người dùng và sau đó in kết quả dưới dạng đầu ra, chúng ta cần dùng thư viện xuất/nhập `io`. Thư viện `io` đến từ thư viện tiêu chuẩn, được gọi là `std`:
 
 ```rust,ignore
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/listing-02-01/src/main.rs:io}}
 ```
 
-Theo mặc định, Rust có một tập hợp các mục được định nghĩa trong thư viện chuẩn mà nó
-đưa vào phạm vi của mọi chương trình. Bộ thư viện này được gọi là *prelude*, và
-bạn có thể thấy mọi thứ trong nó [in the standard library documentation][prelude].
+Theo mặc định, Rust có một tập hợp các mục được định nghĩa trong thư viện chuẩn mà nó đưa vào phạm vi của mọi chương trình. Bộ thư viện này được gọi là *prelude*, và bạn có thể thấy mọi thứ trong nó [in the standard library documentation][prelude].
 
-Nếu loại bạn muốn sử dụng không có trong *prelude*, bạn phải mang nó vào phạm vi sử dụng một cách rõ ràng bằng câu lệnh `use`. Sử dụng thư viện `std::io`
-cung cấp cho bạn một số tính năng hữu ích, bao gồm khả năng chấp nhận
-đầu vào của người dùng.
+Nếu loại bạn muốn sử dụng không có trong *prelude*, bạn phải mang nó vào phạm vi sử dụng một cách rõ ràng bằng câu lệnh `use`. Sử dụng thư viện `std::io` cung cấp cho bạn một số tính năng hữu ích, bao gồm khả năng chấp nhận đầu vào của người dùng.
 
 Như bạn đã thấy trong Chương 1, hàm `main` là điểm bắt đầu thực thi của chương trình:
 
@@ -129,10 +111,11 @@ let apples = 5; // immutable
 let mut bananas = 5; // mutable
 ```
 
-> Lưu ý: Cú pháp `//` bắt đầu một *comment* tiếp tục cho đến hết
-> dòng. Rust bỏ qua mọi thứ trong các bình luận. 
-> Chúng ta sẽ thảo luận thêm về các bình luận
-> chi tiết trong [Chương 3][comments]<!-- bỏ qua -->.
+> Lưu ý: 
+>   Cú pháp `//` bắt đầu một *comment* tiếp tục cho đến hết dòng. 
+>   Rust bỏ qua mọi thứ trong các bình luận. 
+>   Chúng ta sẽ thảo luận thêm về các bình luận
+>   chi tiết trong [Chương 3][comments]<!-- bỏ qua -->.
 
 Quay trở lại với chương trình trò chơi Dự đoán, bây giờ bạn đã biết rằng `let mut Guess` sẽ khai báo một biến có thể thay đổi giá trị có tên là `guess`. Dấu bằng (`=`) cho Rust biết rằng chúng tôi muốn gán thứ gì đó cho biến ngay lúc này. Ở bên phải của dấu bằng là giá trị mà `guess` được gán, nó là kết quả của việc gọi `String::new`, một hàm trả về một thể hiện mới của `String`. [`String`][string]<!-- bỏ qua --> là một kiểu chuỗi kí tự do thư viện chuẩn cung cấp, được mã hóa dạng UTF-8.
 
@@ -379,15 +362,14 @@ Hãy bắt đầu sử dụng `rand` để tạo một số để đoán. Bướ
 Tiếp theo, chúng ta sẽ thêm hai dòng ở giữa. Trong dòng đầu tiên, chúng ta gọi hàm `rand::thread_rng` cung cấp cho chúng ta bộ tạo số ngẫu nhiên cụ thể mà chúng ta sẽ sử dụng: một bộ tạo nằm trong phạm vi của luồng thực thi hiện tại và được tạo bởi hệ điều hành. Sau đó, chúng ta gọi phương thức `gen_range` trên trình tạo số ngẫu nhiên. Phương pháp này được xác định bởi đặc trưng `Rng` mà chúng ta đã đưa vào phạm vi với câu lệnh `use rand::Rng;`. Các
 Phương thức `gen_range` nhận một biểu thức phạm vi làm đối số và tạo một số ngẫu nhiên trong phạm vi. Loại biểu thức phạm vi chúng ta đang sử dụng ở đây có dạng `start..=end` và bao gồm cả giới hạn trên và dưới, vì vậy chúng ta cần chỉ định `1..=100` để yêu cầu một số từ 1 đến 100.
 
-> Lưu ý: Bạn sẽ không chỉ biết nên sử dụng đặc điểm nào, phương pháp và chức năng nào
-> để gọi từ crate, vì vậy mỗi crate đều có tài liệu hướng dẫn 
-> sử dụng. Một tính năng thú vị khác của Cargo là chạy `cargo doc
-> --open` lệnh sẽ xây dựng tài liệu được cung cấp bởi tất cả các phụ thuộc của bạn
-> ngay trên máy tính của bàn và mở nó trong trình duyệt của bạn. Nếu bạn quan tâm đến khác
-> chức năng trong crate `rand`, ví dụ: chạy `cargo doc --open` và
-> nhấp vào `rand` trong thanh bên ở bên trái.
+> Lưu ý: 
+> Bạn sẽ không chỉ biết nên sử dụng đặc điểm nào, phương pháp và chức năng nào để gọi từ crate,
+> vì vậy mỗi crate đều có tài liệu hướng dẫn sử dụng. Một tính năng thú vị khác của Cargo là 
+> chạy `cargo doc > --open` lệnh sẽ xây dựng tài liệu được cung cấp bởi tất cả các phụ thuộc
+> ngay trên máy tính của bạn và mở nó trong trình duyệt. Nếu bạn quan tâm đến các chức năng của
+> crate `rand`, bạn có thể chạy `cargo doc --open` và nhấp vào `rand` trong khung bên trái.
 
-Dòng mới thứ hai in số bí mật. Điều này hữu ích khi chúng ta đang phát triển chương trình để có thể kiểm tra nhưng chúng ta sẽ xóa nó khỏi phiên bản cuối cùng. Nó không phải là một trò chơi nếu chương trình in câu trả lời ngay khi nó bắt đầu!
+Dòng thêm mới thứ hai in số bí mật. Điều này hữu ích khi chúng ta đang phát triển chương trình để có thể kiểm tra, nhưng chúng ta sẽ xóa nó khỏi phiên bản cuối cùng. Chương trình sẽ không phải là trò chơi nếu in câu trả lời ngay khi nó bắt đầu!
 
 Hãy thử chạy chương trình một vài lần:
 
@@ -420,12 +402,11 @@ Please input your guess.
 You guessed: 5
 ```
 
-Bạn sẽ nhận được các số ngẫu nhiên khác nhau và tất cả chúng phải là các số nằm giữa 1 và 100. Bạn làm tốt lắm!
+Bạn sẽ nhận được các số ngẫu nhiên khác nhau và tất cả chúng phải là các số nằm giữa 1 và 100. Bạn đã làm rất tốt !
 
 ## So sánh số dự đoán với số bí mật
 
-Bây giờ chúng ta có đầu vào của người dùng và một số ngẫu nhiên, chúng ta có thể so sánh chúng. Bước đó được hiển thị trong Listing 2-4. Lưu ý rằng mã này sẽ chưa được biên dịch, vì chúng ta sẽ
-giải thích.
+Bây giờ chúng ta có đầu vào của người dùng và một số ngẫu nhiên, chúng ta có thể so sánh chúng. Bước này được hiển thị trong Listing 2-4. Lưu ý rằng mã này sẽ chưa biên dịch được, chúng ta sẽ giải thích vì sao.
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -437,17 +418,15 @@ giải thích.
 
 Trước tiên, chúng ta thêm một câu lệnh `use` khác, đưa một kiểu có tên là `std::cmp::Ordering` vào sử dụng từ thư viện chuẩn. Kiểu `Ordering` là một enum khác và có các biến thể `Less`, `Greater` và `Equal`. Đây là ba kết quả có thể xảy ra khi bạn so sánh hai giá trị.
 
-Sau đó, chúng ta thêm năm dòng mới ở dưới cùng sử dụng kiểu `Ordering`. Phương thức `cmp` so sánh hai giá trị và có thể được dùng để so sánh bất kỳ thứ gì có thể so. Nó tham chiếu đến bất cứ thứ gì bạn muốn so sánh: ở đây nó đang so sánh `guess` với `secret_number`. Sau đó, nó trả về một biến thể của
-`Ordering` enum chúng ta đã đưa vào chương trình với câu lệnh `use`. Chúng tôi sử dụng biểu thức [`match`][match]<!-- ignore --> để quyết định bước tiếp theo dựa trên
-giá trị trả về của `Ordering` từ lệnh gọi tới `cmp` với các giá trị trong `guess` và `secret_number`.
+Sau đó, chúng ta thêm năm dòng mới ở dưới cùng sử dụng kiểu `Ordering`. Phương thức `cmp` so sánh hai giá trị và có thể được dùng để so sánh bất kỳ thứ gì có thể so. Nó tham chiếu đến bất cứ thứ gì bạn muốn so sánh: ở đây nó đang so sánh `guess` với `secret_number`. Sau đó, nó trả về một biến thể của enum `Ordering` chúng ta đã đưa vào chương trình với câu lệnh `use`. Chúng ta sử dụng biểu thức [`match`][match]<!-- ignore --> để quyết định bước tiếp theo dựa trên giá trị trả về của `Ordering` từ lệnh gọi tới `cmp` với các giá trị trong `guess` và `secret_number`.
 
-Biểu thức `match` được tạo thành từ *arms*. Một nhánh bao gồm một *mẫu (pattern)* để so khớp và mã sẽ được chạy nếu giá trị được cung cấp cho `match` phù hợp với mẫu của nhánh đó. Rust lấy giá trị được cung cấp cho `match` và lần lượt xem qua mẫu của từng nhánh. Các mẫu và cấu trúc `match` là các tính năng mạnh mẽ của Rust: chúng cho phép bạn thể hiện nhiều tình huống mà mã của bạn có thể gặp phải và chúng đảm bảo bạn xử lý tất cả chúng. Các tính năng này sẽ được đề cập chi tiết tương ứng trong Chương 6 và Chương 18.
+Biểu thức `match` được tạo thành từ *các rẽ nhánh (arms)*. Một nhánh bao gồm một *mẫu (pattern)* để so khớp và mã sẽ được chạy nếu giá trị được cung cấp cho `match` phù hợp với mẫu của nhánh đó. Rust lấy giá trị được cung cấp cho `match` và lần lượt xem qua mẫu của từng nhánh. Các mẫu và cấu trúc `match` là các tính năng mạnh mẽ của Rust: chúng cho phép bạn thể hiện nhiều tình huống mà mã của bạn có thể gặp phải và chúng đảm bảo bạn xử lý tất cả chúng. Các tính năng này sẽ được đề cập chi tiết tương ứng trong Chương 6 và Chương 18.
 
 Hãy cùng xem một ví dụ với biểu thức `match` mà chúng tôi sử dụng ở đây. Giả sử người dùng đã đoán 50 và số bí mật được tạo ngẫu nhiên lần này là 38.
 
-Khi mã so sánh 50 với 38, phương thức `cmp` sẽ trả về `Ordering::Greater` vì 50 lớn hơn 38. Biểu thức `match` nhận giá trị `Ordering::Greater` và bắt đầu kiểm tra mẫu của từng nhánh. Nó tìm ở mẫu của nhánh đầu tiên, `Ordering::Less`, và thấy rằng giá trị `Ordering::Greater` không khớp với `Ordering::Less`, vì vậy nó bỏ qua mã trong nhánh đó và chuyển sang nhánh tiếp theo. Mẫu của nhánh tiếp theo là `Ordering::Greater`, mà mẫu này *khớp* với `Ordering::Greater`! Mã được liên kết trong nhánh đó sẽ thực thi và in `Too big!` ra màn hình. Biểu thưc `match`kết thúc sau lần so thành công đầu tiên, do đó, nó sẽ không xem xét nhánh cuối cùng trong trường hợp này.
+Khi mã so sánh 50 với 38, vì 50 lớn hơn 38 nên phương thức `cmp` sẽ trả về `Ordering::Greater`. Biểu thức `match` nhận giá trị `Ordering::Greater` và bắt đầu kiểm tra mẫu của từng nhánh. Nó tìm ở mẫu của nhánh đầu tiên, `Ordering::Less`, và thấy rằng giá trị `Ordering::Greater` không khớp với `Ordering::Less`, vì vậy nó bỏ qua mã trong nhánh đó và chuyển sang nhánh tiếp theo. Mẫu của nhánh tiếp theo là `Ordering::Greater`, mà mẫu này *khớp* với `Ordering::Greater`! Mã được liên kết trong nhánh đó sẽ thực thi và in chuỗi `Too big!` ra màn hình. Biểu thức `match` kết thúc sau lần so thành công đầu tiên, do đó trong trường hợp này, nó sẽ không xem xét nhánh cuối cùng.
 
-Tuy nhiên, mã trong Listing 2-4 sẽ chưa được biên dịch. Hãy thử xem nào:
+Tuy nhiên, mã trong Listing 2-4 vẫn chưa biên dịch được. Hãy thử xem nào:
 
 <!--
 The error numbers in this output should be that of the code **WITHOUT** the
@@ -458,9 +437,9 @@ anchor or snip comments
 {{#include ../listings/ch02-guessing-game-tutorial/listing-02-04/output.txt}}
 ```
 
-Nội dung chính của lỗi nói rằng có *mismatched types*. Rust có một hệ thống kiểu dữ liệu tĩnh, mạnh mẽ. Tuy nhiên, nó cũng có kiểu suy luận. Khi chúng ta viết `let mut guess = String::new()`, Rust có thể suy luận rằng `guess` phải là một `String` và không bắt chúng ta khai báo kiểu dữ liệu trước. Mặt khác, `secret_number` là một biến kiểu số. Một số kiểu dữ liệu dạng số của Rust có thể có giá trị từ 1 đến 100: `i32`, số 32 bit; `u32`, một số 32 bit không dấu; `i64`, một số 64 bit; cũng như những người khác. Trừ khi được quy định khác, Rust mặc định là `i32`, là loại `secret_number` trừ khi bạn thêm thông tin kiểu dữ liệu ở nơi khác sẽ khiến Rust suy ra một kiểu dữ liệu số khác. Nguyên nhân của lỗi là Rust không thực hiện phép so sánh giữa một dữ liệu kiểu chuỗi kí tự và một dữ liệu kiểu số.
+Nội dung chính của lỗi nói rằng *mismatched types*. Rust có một hệ thống kiểu dữ liệu tĩnh, mạnh mẽ. Tuy nhiên, nó cũng có kiểu suy luận. Khi chúng ta viết `let mut guess = String::new()`, Rust có thể suy luận rằng `guess` phải là một `String` và không bắt chúng ta khai báo kiểu dữ liệu trước. Mặt khác, `secret_number` là một biến kiểu số. Một số kiểu dữ liệu dạng số của Rust có thể có giá trị từ 1 đến 100, `i32`: số 32 bit; `u32`: một số 32 bit không dấu; `i64`: một số 64 bit; cũng như những người khác. Trừ khi được quy định khác, Rust mặc định là `secret_number` là kiểu `i32`, trừ khi bạn thêm thông tin kiểu dữ liệu ở nơi khác sẽ khiến Rust suy ra một kiểu dữ liệu số khác. Nguyên nhân của lỗi là Rust không thực hiện phép so sánh giữa một dữ liệu kiểu chuỗi kí tự và một dữ liệu kiểu số.
 
-Cuối cùng, chúng ta chuyển đổi `String` mà chương trình đọc dưới dạng đầu vào thành một kiểu số thực để chúng ta có thể so sánh nó với số bí mật. Chúng ta làm điều đó bằng cách thêm dòng này vào thân hàm `main`:
+Cuối cùng, chúng ta chuyển đổi `String` mà chương trình đọc dưới dạng đầu vào thành một kiểu số để chúng ta có thể so sánh nó với số bí mật. Chúng ta làm điều đó bằng cách thêm dòng này vào thân hàm `main`:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -468,32 +447,27 @@ Cuối cùng, chúng ta chuyển đổi `String` mà chương trình đọc dư�
 {{#rustdoc_include ../listings/ch02-guessing-game-tutorial/no-listing-03-convert-string-to-number/src/main.rs:here}}
 ```
 
-Dòng cần thêm là:
+Dòng cần thêm:
 
 ```rust,ignore
 let guess: u32 = guess.trim().parse().expect("Please type a number!");
 ```
 
-Chúng ta tạo một biến có tên `guess`. Mà khoan đã, chẳng phải chương trình đã có biến tên `guess` rồi sao? Nó có, nhưng thật hữu ích, Rust cho phép chúng ta che giấu
-giá trị trước đó của `guess` bằng một giá trị mới. Shadowing* cho phép chúng tôi sử dụng lại tên biến `guess` thay vì buộc chúng tôi phải tạo hai biến duy nhất, chẳng hạn như: `guess_str` và `guess`. Chúng tôi sẽ trình bày chi tiết hơn về vấn đề này trong [Chương 3][shadowing]<!-- ignore -->, nhưng hiện tại, hãy biết rằng tính năng này thường được sử dụng khi bạn muốn chuyển đổi một giá trị từ kiểu này sang kiểu khác.
+Chúng ta tạo một biến có tên `guess`. Mà khoan đã, chẳng phải chương trình đã có biến tên `guess` rồi sao? Nó có, nhưng thật hữu ích, Rust cho phép chúng ta che khuất giá trị trước đó của `guess` bằng một giá trị mới. *Che khuất (Shadowing)* cho phép chúng ta sử dụng lại tên biến `guess` thay vì buộc chúng tôi phải tạo hai biến riêng biệt, chẳng hạn như: `guess_str` và `guess`. Chúng ta sẽ trình bày chi tiết hơn về vấn đề này trong [Chương 3][shadowing]<!-- ignore -->, nhưng hiện tại, hãy biết rằng tính năng này thường được sử dụng khi bạn muốn chuyển đổi một giá trị từ kiểu này sang kiểu khác.
 
-Chúng ta gắn biến mới này với biểu thức `guess.trim().parse()`. Biến `guess` trong biểu thức đề cập đến biến `guess` ban đầu chứa dữ liệu được nhập vào dưới dạng một chuỗi. Phương thức `trim` của `String` sẽ loại bỏ mọi khoảng trắng ở đầu và cuối, điều mà chúng ta phải làm để có thể so sánh
-chuỗi với `u32`, chuỗi này chỉ có thể chứa dữ liệu dạng số. Người dùng phải nhấn <span class="keystroke">enter</span> để đáp ứng `read_line` và nhập dự đoán của họ, thao tác này sẽ thêm một ký tự xuống dòng vào chuỗi. Ví dụ: nếu người dùng nhập <span class="keystroke">5</span> và nhấn <span
-class="keystroke">enter</span>, `guess` trông như thế này: `5\n`. Kí tự `\n` đại diện cho “dòng mới”. (Trên Windows, nhấn <span class="keystroke">enter</span> dẫn đến xuống dòng và đừa con trỏ về đầu dòng, `\r\n`.) Phương thức `trim` loại bỏ `\n` hoặc `\r\ n`, làm cho kết quả chỉ còn duy nhất giá trị `5`.
+Chúng ta gắn biến mới này với biểu thức `guess.trim().parse()`. Biến `guess` trong biểu thức đề cập đến biến `guess` ban đầu chứa dữ liệu được nhập vào dưới dạng một chuỗi. Phương thức `trim` của `String` sẽ loại bỏ mọi khoảng trắng ở đầu và cuối, điều mà chúng ta phải làm để có thể so sánh chuỗi với `u32`, chuỗi này chỉ có thể chứa dữ liệu dạng số. Người dùng phải nhập dự đoán của họ và nhấn <span class="keystroke">enter</span> để cho hàm `read_line` nhận dữ liệu, thao tác này sẽ thêm một ký tự xuống dòng vào chuỗi. Ví dụ: nếu người dùng nhập <span class="keystroke">5</span> và nhấn <span class="keystroke">enter</span>, `guess` trông như thế này: `5\n`. Kí tự `\n` đại diện cho “dòng mới”. (Trên Windows, nhấn <span class="keystroke">enter</span> dẫn đến xuống dòng và đừa con trỏ về đầu dòng, `\r\n`.) Phương thức `trim` loại bỏ `\n` hoặc `\r\ n`, làm cho kết quả chỉ còn duy nhất giá trị `5`.
 
-[Phương thức `parse` trên chuỗi][parse] chuyển đổi một chuỗi thành một kiểu khác. Ở đây, chúng ta sử dụng nó để chuyển đổi từ một chuỗi kí tự thành một số. Chúng ta cần phải cho Rust biết lkiểu số chính xác mà chúng ta muốn bằng cách sử dụng `let guess: u32`. Dấu hai chấm (`:`) sau `guess` cho Rust biết rằng chúng ta sẽ khai báo kiểu biến. Rust có một vài kiểu số tích hợp sẵn; `u32` ở đây là một số nguyên 32 bit không dấu.
+[Phương thức `parse` trên chuỗi][parse] chuyển đổi một chuỗi thành một kiểu khác. Ở đây, chúng ta sử dụng nó để chuyển đổi từ một chuỗi kí tự thành một số. Chúng ta cần phải cho Rust biết lkiểu số chính xác mà chúng ta muốn bằng cách sử dụng `let guess: u32`. Dấu hai chấm (`:`) sau `guess` cho Rust biết rằng chúng ta sẽ khai báo kiểu dữ liệu. Rust có một vài kiểu số tích hợp sẵn; `u32` ở đây là một số nguyên 32 bit không dấu.
 Đó là lựa chọn mặc định phù hợp với một số dương nhỏ. Bạn sẽ tìm hiểu về các loại số khác trong [Chương 3][integers]<!-- ignore -->.
 
-Ngoài ra, khai báo `u32` trong chương trình ví dụ này và sự so sánh với `secret_number` có nghĩa là Rust sẽ suy ra rằng `secret_number` phải là một
-`u32` cũng vậy. Vì vậy, bây giờ so sánh sẽ là giữa hai giá trị của cùng một loại!
+Ngoài ra, khai báo `u32` trong chương trình ví dụ này và sự so sánh với `secret_number` có nghĩa là Rust sẽ suy ra rằng, như vậy `secret_number` phải là một biến có kiểu `u32`. Vì vậy, bây giờ phép so sánh sẽ là so sánh giữa hai giá trị của cùng một kiểu !
 
-Phương thức `parse` sẽ chỉ hoạt động trên các ký tự có thể được chuyển đổi thành số một cách hợp lý và do đó có thể dễ dàng gây ra lỗi. Ví dụ, nếu chuỗi
-chứa `A👍%`, sẽ không có cách nào để chuyển đổi nó thành một số. Vì có thể không thành công nên phương thức `parse` trả về kiểu `Result`, giống như cách mà phương thức `read_line` đã làm (đã thảo luận trước đó trong [“Handling Potential Failure with `Result`”] (#handling-potential-failure-with-result)<!-- ignore-->). 
+Phương thức `parse` sẽ chỉ hoạt động trên các ký tự có thể được chuyển đổi thành số một cách hợp lý và do đó có thể dễ dàng gây ra lỗi. Ví dụ, nếu chuỗi chứa `A👍%`, sẽ không có cách nào để chuyển đổi nó thành một số. Vì phép so sánh có thể không thành công, cho nên phương thức `parse` trả về kiểu `Result`, giống như cách mà phương thức `read_line` đã làm (đã thảo luận trước đó trong [“Handling Potential Failure with `Result`”] (#handling-potential-failure-with-result)<!-- ignore-->). 
 
-Chúng tôi sẽ đối xử `Result` theo cách tương tự bằng cách sử dụng lại phương thức `expect`. Nếu `parse` trả về một biến thể `Err` `Result` vì nó không thể tạo một số từ chuỗi, thì lệnh gọi `expect` sẽ làm trò chơi bị sập và in thông báo mà chúng ta cung cấp.
-Nếu `parse` có thể chuyển đổi thành công chuỗi thành một số, nó sẽ trả về biến thể `Ok` của `Result` và `expect` sẽ trả về số mà chúng ta muốn từ giá trị của `Ok`.
+Chúng ta sẽ xử lý với `Result` theo cách tương tự bằng cách sử dụng lại phương thức `expect`. Nếu `parse` trả về một kết quả `Err` của `Result` vì nó không thể tạo một số từ chuỗi, thì lệnh gọi `expect` sẽ làm chương trình bị sập và in thông báo mà chúng ta cung cấp.
+Nếu `parse` thành công cho việc chuyển đổi chuỗi thành số, nó sẽ trả về kết quả `Ok` của `Result` và `expect` sẽ trả về số mà chúng ta muốn từ giá trị của `Ok`.
 
-Hãy chạy chương trình ngay bây giờ:
+Bây giờ hãy chạy chương trình:
 
 <!-- manual-regeneration
 cd listings/ch02-guessing-game-tutorial/no-listing-03-convert-string-to-number/
@@ -509,19 +483,19 @@ $ cargo run
 Guess the number!
 The secret number is: 58
 Please input your guess.
-  76
+    76
 You guessed: 76
 Too big!
 ```
 
 Tốt! Mặc dù khoảng trắng đã được thêm vào trước khi đoán, nhưng chương trình vẫn nhận ra rằng người dùng đã đoán là 76. Chạy chương trình một vài lần để xác minh các hành vi khác nhau với các loại đầu vào khác nhau: đoán đúng số, đoán một số quá cao, và đoán một con số quá thấp.
 
-Hiện tại chúng ta trò chơi gần như là hoạt động, nhưng người dùng chỉ có thể đoán một lần.
+Hiện tại chương trình của chúng ta đã gần như là hoạt động, nhưng người dùng chỉ có thể đoán một lần.
 Hãy thay đổi điều đó bằng cách thêm một vòng lặp!
 
 ## Cho phép nhiều lần đoán với vòng lặp
 
-Từ khóa `loop` tạo ra một vòng lặp bất tận. Chúng tôi sẽ thêm một vòng lặp để cung cấp cho người dùng nhiều cơ hội đoán số hơn:
+Từ khóa `loop` tạo ra một vòng lặp vĩnh cửu. Chúng ta sẽ thêm một vòng lặp để cung cấp cho người dùng nhiều cơ hội đoán số hơn:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -531,9 +505,7 @@ Từ khóa `loop` tạo ra một vòng lặp bất tận. Chúng tôi sẽ thêm
 
 Như bạn có thể thấy, chúng ta đã chuyển mọi thứ từ lời nhắc nhập dữ liệu trở đi vào một vòng lặp. Hãy chắc chắn thụt lề các dòng bên trong vòng lặp thêm bốn khoảng trắng và chạy lại chương trình. Bây giờ, chương trình sẽ liên tục yêu cầu một lần đoán khác, điều này thực sự đưa ra một vấn đề mới. Có vẻ như người dùng không thể bỏ cuộc!
 
-Người dùng sẽ luôn có thể ngắt chương trình bằng cách sử dụng phím tắt <span class="keystroke">ctrl-c</span>. Nhưng có một cách khác để thoát khỏi con quái vật vô độ này, như đã đề cập trong cuộc thảo luận về 'phân tích cú pháp' ở [“Comparing the
-Guess to the Secret Number”](#comparing-the-guess-to-the-secret-number)<!--
-ignore -->: nếu người dùng nhập một câu trả lời không phải là số, chương trình sẽ bị lỗi. Chúng ta có thể tận dụng lợi thế đó để cho phép người dùng thoát chương trình, như minh họa ở đây:
+Người dùng sẽ luôn có thể ngắt chương trình bằng cách sử dụng phím tắt <span class="keystroke">ctrl-c</span>. Nhưng có một cách khác để thoát khỏi con quái vật vô độ này, như đã đề cập trong cuộc thảo luận về 'phân tích cú pháp' ở [“So sánh số đoán với số bí mật”](#comparing-the-guess-to-the-secret-number)<!-- ignore -->: nếu người dùng nhập một câu trả lời không phải là số, chương trình sẽ bị lỗi. Chúng ta có thể tận dụng lợi thế đó để cho phép người dùng thoát chương trình, như minh họa ở đây:
 
 <!-- manual-regeneration
 cd listings/ch02-guessing-game-tutorial/no-listing-04-looping/
@@ -595,13 +567,13 @@ Việc thêm dòng `break` sau `You win!` làm cho chương trình thoát khỏi
 
 <span class="caption">Listing 2-5: Bỏ qua lời đoán không phải là kí tự số và cho nhập số mới thay vì gây lỗi dừng chương trình</span>
 
-Chúng tôi chuyển từ một lời gọi `expect` sang một biểu thức `match` để chuyển từ sự cố do lỗi sang xử lý lỗi. Hãy nhớ rằng `parse` trả về một kiểu `Result` và `Result` là một enum có các biến thể `Ok` và `Err`. Chúng tôi đang sử dụng biểu thức `match` ở đây, giống như chúng tôi đã làm với kết quả `Ordering` của phương thức `cmp`.
+Chúng ta chuyển từ một lời gọi `expect` sang một biểu thức `match` để chuyển từ sự cố do lỗi sang xử lý lỗi. Hãy nhớ rằng `parse` trả về một kiểu `Result` và `Result` là một enum có các biến thể `Ok` và `Err`. Chúng ta đang sử dụng biểu thức `match` ở đây, giống như chúng ta đã làm với kết quả `Ordering` của phương thức `cmp`.
 
-Nếu `parse` có thể thành công trong việc chuyển chuỗi thành  số, thì nó sẽ trả về một giá trị `Ok` có chứa con số kết quả. Giá trị `Ok` đó sẽ khớp với mẫu của nhánh đầu tiên và biểu thức `match` sẽ chỉ trả về giá trị `num` mà `parse` đã tạo và đặt bên trong giá trị `Ok`. Con số đó sẽ kết thúc đúng nơi chúng ta muốn trong biến `guess` mới mà chúng ta đang tạo.
+Nếu `parse` có thể thành công trong việc chuyển chuỗi thành số, thì nó sẽ trả về một giá trị `Ok` có chứa con số kết quả. Giá trị `Ok` đó sẽ khớp với mẫu của nhánh đầu tiên và biểu thức `match` sẽ chỉ trả về giá trị `num` mà `parse` đã tạo và đặt bên trong giá trị `Ok`. Con số đó sẽ kết thúc đúng nơi chúng ta muốn trong biến `guess` mới mà chúng ta đang tạo.
 
-Nếu `parse` *không thể* chuyển chuỗi thành số, nó sẽ trả về giá trị `Err` chứa thêm thông tin về lỗi. Giá trị `Err` không khớp với mẫu `Ok(num)` trong nhánh `match` đầu tiên, nhưng nó khớp với mẫu `Err(_)` trong nhánh thứ hai. Dấu gạch dưới, `_`, là một giá trị tổng quát; trong ví dụ này, chúng tôi đang nói rằng chúng tôi muốn kiểm tra tất cả các giá trị `Err`, bất kể chúng có thông tin gì bên trong chúng. Vì vậy chương trình sẽ thực thi mã của nhánh thứ hai, `continue`, yêu cầu chương trình chuyển sang bước lặp tiếp theo của `vòng lặp` và yêu cầu một lần đoán khác. Vì vậy, chương trình bỏ qua một cách hiệu quả tất cả các lỗi mà `parse` có thể gặp phải !
+Nếu `parse` *không thể* chuyển chuỗi thành số, nó sẽ trả về giá trị `Err` chứa thêm thông tin về lỗi. Giá trị `Err` không khớp với mẫu `Ok(num)` trong nhánh `match` đầu tiên, nhưng nó khớp với mẫu `Err(_)` trong nhánh thứ hai. Dấu gạch dưới, `_`, là một giá trị tổng quát; trong ví dụ này, chúng ta đang nói rằng chúng ta muốn kiểm tra tất cả các giá trị `Err`, bất kể chúng có thông tin gì bên trong chúng. Vì vậy chương trình sẽ thực thi mã của nhánh thứ hai, `continue`, yêu cầu chương trình chuyển sang bước lặp tiếp theo của `vòng lặp` và yêu cầu một lần đoán khác. Vì vậy, chương trình bỏ qua một cách hiệu quả tất cả các lỗi mà `parse` có thể gặp phải !
 
-Giờ mọi thứ trong chương trình sẽ hoạt động như mong đợi. Hãy làm thử xem:
+Giờ mọi thứ trong chương trình sẽ hoạt động như mong đợi. Hãy thử xem:
 
 <!-- manual-regeneration
 cd listings/ch02-guessing-game-tutorial/listing-02-05/
@@ -643,9 +615,9 @@ Tuyệt vời! Với một tinh chỉnh nhỏ cuối cùng, chúng ta sẽ kết
 
 <span class="caption">Listing 2-6: Chương trình hoàn chỉnh</span>
 
-Đến đây, bạn đã xây dựng thành công trò chơi đoán. Chúc mừng!
+Đến đây, bạn đã xây dựng thành công trò chơi Dự đoán. Xin chúc mừng!
 
-## Bản tóm tắt
+## Tóm tắt
 
 Dự án này là một cách thực tế để giới thiệu cho bạn nhiều khái niệm Rust mới:
 `let`, `match`, các hàm, cách sử dụng các crate bên ngoài, v.v. Ở phần tiếp theo trong một vài chương, bạn sẽ tìm hiểu chi tiết hơn về các khái niệm này. Chương 3 bao gồm các khái niệm mà hầu hết các ngôn ngữ lập trình đều có, chẳng hạn như các biến, các kiểu dữ liệu và các hàm, đồng thời chỉ ra cách sử dụng chúng trong Rust. Chương 4 khám phá quyền sở hữu, một tính năng làm cho Rust khác biệt với các ngôn ngữ khác. Chương 5 thảo luận về cấu trúc và cú pháp của phương thức, và Chương 6 giải thích cách thức hoạt động của enums.
