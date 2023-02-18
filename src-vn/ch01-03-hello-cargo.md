@@ -1,10 +1,8 @@
 ## Chào Cargo !
 
-Cargo là hệ thống xây dựng và quản lý gói của Rust. Hầu hết Rustaceans sử dụng công cụ này để quản lý các dự án Rust của họ vì Cargo xử lý rất nhiều việc cho bạn, chẳng hạn như xây dựng mã của bạn, tải xuống các thư viện mà mã của bạn sử dụng và xây dựng các thư viện đó. 
-(Chúng tôi gọi các thư viện mà mã của bạn cần là *các phụ thuộc (dependencies)*.)
+Cargo là hệ thống xây dựng và quản lý gói của Rust. Hầu hết Rustaceans sử dụng công cụ này để quản lý các dự án Rust của họ vì Cargo xử lý rất nhiều việc cho bạn, chẳng hạn như xây dựng mã của bạn, tải xuống các thư viện mà mã của bạn sử dụng và xây dựng các thư viện đó. Chúng tôi gọi các thư viện mà mã của bạn cần là *các phụ thuộc (dependencies)*.
 
-Chương trình Rust đơn giản nhất, giống như chương trình chúng ta đã viết, không có bất kỳ một phụ thuộc nào. Nếu chúng ta đã xây dựng "Hello, world!" dự án với Cargo, nó sẽ chỉ sử dụng phần Cargo xử lý việc xây dựng mã của bạn. Khi bạn viết các chương trình Rust phức tạp hơn, bạn sẽ thêm các phần phụ thuộc 
-và nếu bạn bắt đầu một dự án bằng sử dụng Cargo, việc thêm các phụ thuộc sẽ dễ hơn nhiều.
+Chương trình Rust đơn giản nhất, giống như chương trình chúng ta đã viết, không có bất kỳ một phụ thuộc nào. Nếu chúng ta đã xây dựng "Hello, world!" dự án với Cargo, nó sẽ chỉ sử dụng phần Cargo xử lý việc xây dựng mã của bạn. Khi bạn viết các chương trình Rust phức tạp hơn, bạn sẽ thêm các phần phụ thuộc và nếu bạn bắt đầu một dự án bằng sử dụng Cargo, việc thêm các phụ thuộc sẽ dễ hơn nhiều.
 
 Bởi vì phần lớn các dự án Rust sử dụng Cargo, phần còn lại của cuốn sách này giả định rằng bạn cũng sử dụng Cargo. Cargo được cài đặt với Rust nếu bạn đã sử dụng trình cài đặt chính thức được thảo luận trong phần [“Cài đặt”][cài đặt]<!-- bỏ qua -->. Nếu bạn đã cài đặt Rust thông qua một số phương thức khác, hãy kiểm tra xem Cargo đã được cài đặt hay chưa bằng cách nhập lệnh sau vào cửa sổ dòng lệnh của bạn:
 
@@ -43,7 +41,8 @@ name = "hello_cargo"
 version = "0.1.0"
 edition = "2021"
 
-# Xem thêm các khóa và các định nghĩa của chúng tại https://doc.rust-lang.org/cargo/reference/manifest.html
+# Xem thêm các khóa và các định nghĩa của chúng tại 
+# https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 ```

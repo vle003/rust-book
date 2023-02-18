@@ -2,13 +2,13 @@
 
 Giờ đây, khi bạn đã cài đặt Rust, chính là lúc để viết chương trình Rust đầu tiên của bạn. Nó đã thành truyền thống khi học một ngôn ngữ lập trình mới là viết một chương trình nhỏ và in dòng chữ `Hello, world!` ra màn hình, do đó chúng ta cũng sẽ làm điều đó ở đây!
 
-> Ghi chú: Cuốn sách này giả định sự quen thuộc cơ bản với dòng lệnh. Rust không có 
-> yêu cầu cụ thể nào về bộ soạn thảo hay công cụ hay vị trí mã của bạn, vì vậy
-> nếu bạn muốn sử dụng môi trường phát triển tích hợp (IDE) thay vì dòng lệnh,
-> cứ thoải mái sử dụng IDE yêu thích của bạn. Nhiều IDE hiện có một số
-> mức độ hỗ trợ Rust; kiểm tra tài liệu của IDE để biết chi tiết. Đội ngũ phát triển Rust
-> đã và đang tập trung vào việc kích hoạt các IDE lớn hỗ trợ  thông qua `rust-analyzer`.
-> Xem [Phụ lục D][devtools]<!-- ignore --> để biết thêm chi tiết.
+> Ghi chú: Cuốn sách này giả định sự quen thuộc cơ bản với dòng lệnh. 
+> Rust không có yêu cầu cụ thể nào về bộ soạn thảo hay công cụ hay vị trí 
+> lưu trữ mã của bạn, vì vậy nếu bạn muốn sử dụng môi trường phát triển 
+> tích hợp (IDE) thay vì dòng lệnh, cứ thoải mái sử dụng IDE yêu thích của bạn. 
+> Nhiều IDE hiện có một số mức độ hỗ trợ Rust; kiểm tra tài liệu của IDE để 
+> biết chi tiết. Đội ngũ phát triển Rust đã và đang tập trung vào việc kích 
+> hoạt các IDE lớn hỗ trợ  thông qua `rust-analyzer`. Xem [Phụ lục D][devtools]> <!-- ignore --> để biết thêm chi tiết.
 
 ### Tạo thư mục dự án
 
@@ -66,8 +66,7 @@ On Windows, enter the command `.\main.exe` instead of `./main`:
 Hello, world!
 ```
 
-Bất kể hệ điều hành của bạn là gì, chuỗi `Hello, world!` sẽ in ra cửa sổ dòng lệnh. Nếu bạn không thấy kết quả này, hãy tham khảo lại phần [“Khắc phục sự cố”][troubleshooting]<!-- bỏ qua --> trong chương Cài đặt
-để tìm các sự trợ giúp.
+Bất kể hệ điều hành của bạn là gì, chuỗi `Hello, world!` sẽ in ra cửa sổ dòng lệnh. Nếu bạn không thấy kết quả này, hãy tham khảo lại phần [“Khắc phục sự cố”][troubleshooting]<!-- bỏ qua --> trong chương Cài đặt để tìm các sự trợ giúp.
 
 Nếu `Hello, world!` hiển thị trên cửa sổ, xin chúc mừng! Bạn đã chính thức viết
 một chương trình Rust. Điều đó khiến bạn trở thành một lập trình viên Rust—xin chào mừng!
@@ -86,11 +85,12 @@ Những dòng này khai báo một hàm có tên `main`. Chức năng của `mai
 
 Thân hàm được gói trong cặp kí tự `{}`. Rust yêu cầu dấu ngoặc nhọn xung quanh tất cả các hàm. Một phong cách tốt là đặt dấu ngoặc nhọn mở trên cùng một dòng với khai báo hàm, thêm một khoảng trắng ở giữa.
 
-> Lưu ý: Nếu bạn muốn sử dụng một phong cách tiêu chuẩn trong các dự án Rust, bạn có thể
-> sử dụng công cụ định dạng tự động có tên `rustfmt` để định dạng mã của bạn theo phong cách 
-> định dạng cụ thể (xem thêm về `rustfmt` trong [Phụ lục D][devtools]<!-- bỏ qua -->). 
-> Nhóm phát triển Rust đã bao gồm công cụ này với bản phân phối Rust tiêu chuẩn, cũng như `rustc`,
-> vì vậy nó đã được cài đặt trên máy tính của bạn!
+> Lưu ý: Nếu bạn muốn sử dụng một phong cách tiêu chuẩn trong các dự án Rust, 
+> bạn có thể sử dụng công cụ định dạng tự động có tên `rustfmt` để định dạng mã 
+> của bạn theo phong cách định dạng cụ thể (xem thêm về `rustfmt` trong 
+> [Phụ lục D][devtools]<!-- bỏ qua -->). 
+> Nhóm phát triển Rust đã bao gồm công cụ này với bản phân phối Rust tiêu 
+> chuẩn, cũng như `rustc`, vì vậy nó đã được cài đặt trên máy tính của bạn!
 
 Phần thân của hàm `main` chứa đoạn mã sau:
 
@@ -143,8 +143,7 @@ $ ./main # or .\main.exe on Windows
 ```
 Nếu *main.rs* của bạn là chương trình “Hello, world!”, dòng này in ra `Hello, world!` trên cửa sổ dòng lệnh của bạn.
 
-Nếu bạn quen thuộc hơn với một ngôn ngữ động, chẳng hạn như Ruby, Python hoặc JavaScript, bạn có thể không quen với việc biên dịch và chạy một chương trình như các bước riêng biệt. Rust là ngôn ngữ *được biên dịch trước*, nghĩa là bạn có thể biên dịch chương trình và đưa tệp thực thi cho người khác và họ có thể chạy 
-chương trình đó ngay cả khi chưa cài đặt Rust. Nếu bạn cho ai đó *.rb*, *.py* hoặc *.js*, trước tiên họ cần cài Ruby, Python hoặc JavaScript (tương ứng). Nhưng trong những ngôn ngữ đó, bạn chỉ cần một lệnh để biên dịch và chạy chương trình của bạn. Tất cả những điều này là một sự đánh đổi trong thiết kế của ngôn ngữ.
+Nếu bạn quen thuộc hơn với một ngôn ngữ động, chẳng hạn như Ruby, Python hoặc JavaScript, bạn có thể không quen với việc biên dịch và chạy một chương trình như các bước riêng biệt. Rust là ngôn ngữ *được biên dịch trước*, nghĩa là bạn có thể biên dịch chương trình và đưa tệp thực thi cho người khác và họ có thể chạy chương trình đó ngay cả khi chưa cài đặt Rust. Nếu bạn cho ai đó *.rb*, *.py* hoặc *.js*, trước tiên họ cần cài Ruby, Python hoặc JavaScript (tương ứng). Nhưng trong những ngôn ngữ đó, bạn chỉ cần một lệnh để biên dịch và chạy chương trình của bạn. Tất cả những điều này là một sự đánh đổi trong thiết kế của ngôn ngữ.
 
 Chỉ cần biên dịch với `rustc` là đủ cho các chương trình đơn giản, nhưng với dự án của bạn phình to lên, bạn sẽ muốn quản lý tất cả các tùy chọn và giúp dễ dàng chia sẻ mã. Tiếp theo, chúng tôi sẽ giới thiệu cho bạn công cụ Cargo, công cụ này sẽ giúp bạn viết các chương trình Rust thực thụ.
 

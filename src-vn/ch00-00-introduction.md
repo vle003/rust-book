@@ -8,7 +8,9 @@
 
 
 Chào mừng bạn đến với cuốn sách *The Rust Programming Language*, một cuốn sách có tính chất giới thiệu về ngôn ngữ lập trình Rust.
+
 Ngôn ngữ lập trình Rust là một ngôn ngữ sẽ giúp bạn viết ra các phần mềm máy tính nhanh hơn, tin cậy hơn.
+
 Tính hữu dụng cao và khả năng điều khiển hệ thống ở mức thấp thường không đi cùng nhau trong việc thiết kế ngôn ngữ lập trình; Rust đã thách thức điều mâu thuẫn này. Bằng cách cân đối giữa các cảm xúc của lập trình viên và khả năng kỹ thuật, Rust đã mang lại cho bạn khả năng kiểm soát hệ thống ở mức thấp một cách chi tiết (như là sử dụng bộ nhớ) mà không có những khó khăn truyền thống luôn đi kèm với các kiểm soát hệ thống mức thấp như vậy.
 
 ## Rust dành cho ai 

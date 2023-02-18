@@ -1,7 +1,6 @@
 # Viết một trò chơi Giải đoán
 
-Hãy bắt đầu với Rust bằng cách cùng nhau thực hiện một dự án thực hành! Chương này giới thiệu cho bạn một số khái niệm Rust phổ biến bằng cách hướng dẫn bạn cách sử dụng chúng trong một chương trình thực tế. Bạn sẽ tìm hiểu về `let`, `match`, các phương thức, các hàm đi kèm, các crate, và nhiều hơn nữa! Trong các chương tiếp theo, chúng ta sẽ khám phá
-những ý tưởng này một cách chi tiết hơn. Trong chương này, bạn sẽ chỉ thực hành các nguyên tắc cơ bản.
+Hãy bắt đầu với Rust bằng cách cùng nhau thực hiện một dự án thực hành! Chương này giới thiệu cho bạn một số khái niệm Rust phổ biến bằng cách hướng dẫn bạn cách sử dụng chúng trong một chương trình thực tế. Bạn sẽ tìm hiểu về `let`, `match`, các phương thức, các hàm đi kèm, các crate, và nhiều hơn nữa! Trong các chương tiếp theo, chúng ta sẽ khám phá những ý tưởng này một cách chi tiết hơn. Trong chương này, bạn sẽ chỉ thực hành các nguyên tắc cơ bản.
 
 Chúng ta sẽ thực hiện một bài toán lập trình cổ điển dành cho người mới bắt đầu: một trò chơi Giải đoán. Đây là cách thức hoạt động: chương trình sẽ tạo ra một số nguyên ngẫu nhiên trong khoảng từ 1 đến 100. Sau đó nó sẽ nhắc người chơi nhập dự đoán. Sau khi dự đoán được nhập, chương trình sẽ cho biết dự đoán quá thấp hay quá cao. Nếu dự đoán là đúng, trò sẽ in thông báo chúc mừng và thoát ra.
 
@@ -72,7 +71,7 @@ Mã này chứa rất nhiều thông tin, vì vậy hãy xem qua từng dòng m�
 
 Theo mặc định, Rust có một tập hợp các mục được định nghĩa trong thư viện chuẩn mà nó đưa vào phạm vi của mọi chương trình. Bộ thư viện này được gọi là *prelude*, và bạn có thể thấy mọi thứ trong nó [in the standard library documentation][prelude].
 
-Nếu loại bạn muốn sử dụng không có trong *prelude*, bạn phải mang nó vào phạm vi sử dụng một cách rõ ràng bằng câu lệnh `use`. Sử dụng thư viện `std::io` cung cấp cho bạn một số tính năng hữu ích, bao gồm khả năng chấp nhận đầu vào của người dùng.
+Nếu loại bạn muốn sử dụng không có trong *prelude*, bạn phải đem nó vào khối lênh sẽ sử dụng nó một cách rõ ràng bằng câu lệnh `use`. Sử dụng thư viện `std::io` cung cấp cho bạn một số tính năng hữu ích, bao gồm khả năng chấp nhận đầu vào của người dùng.
 
 Như bạn đã thấy trong Chương 1, hàm `main` là điểm bắt đầu thực thi của chương trình:
 
@@ -224,7 +223,7 @@ You guessed: 6
 Tại thời điểm này, phần đầu tiên của trò chơi đã hoàn thành: chúng ta đang nhận thông tin đầu vào từ
 bàn phím và sau đó in nó.
 
-## Tạo số bí mật
+## Tạo Số bí mật
 
 Tiếp theo, chúng ta cần tạo một số bí mật mà người dùng sẽ cố gắng đoán. Số bí mật phải khác nhau mỗi lần để trò chơi thú vị khi chơi nhiều lần. Chúng tôi sẽ sử dụng một số ngẫu nhiên từ 1 đến 100 để trò chơi không quá khó. Rust chưa bao gồm chức năng tạo số ngẫu nhiên trong thư viện tiêu chuẩn của nó. Tuy nhiên, nhóm phát triển Rust cung cấp một [crate `rand`][randcrate] cho chức năng này.
 
@@ -306,7 +305,7 @@ $ cargo build
 
 Những dòng này cho thấy Cargo chỉ cập nhật bản dựng với thay đổi nhỏ của bạn đối với tệp *src/main.rs*. Các thành phần phụ thuộc của bạn không thay đổi nên Cargo biết rằng nó có thể sử dụng lại những gì nó đã tải xuống và biên dịch cho chúng.
 
-#### Đảm bảo các bản dựng có thể tái sản xuất bằng tệp *Cargo.lock*
+#### Đảm bảo có thể tái tạo các bản dựng bằng tệp *Cargo.lock*
 
 Cargo có một cơ chế đảm bảo rằng bạn có thể xây dựng lại cùng một thành phần phần mềm mỗi khi bạn hoặc bất kỳ ai khác xây dựng mã của bạn: Cargo sẽ chỉ sử dụng các phiên bản của các thành phần phụ thuộc mà bạn đã chỉ định cho đến khi bạn chỉ định khác. Ví dụ: giả sử rằng phiên bản 0.8.6 của thùng `rand` sẽ ra mắt vào tuần tới và phiên bản đó
 chứa một sửa lỗi quan trọng, nhưng nó cũng chứa một hồi quy sẽ phá vỡ mã của bạn. Để giải quyết vấn đề này, Rust tạo tệp *Cargo.lock* trong lần đầu tiên bạn chạy `cargo build`, vì vậy chúng tôi hiện có tệp này trong *guessing_game*
@@ -317,7 +316,7 @@ rằng tệp *Cargo.lock* tồn tại và sẽ sử dụng các phiên bản đ�
 duy trì ở mức 0.8.5 cho đến khi bạn nâng cấp rõ ràng, nhờ vào tệp *Cargo.lock*.
 Vì tệp *Cargo.lock* rất quan trọng đối với các bản dựng có thể tái sản xuất nên tệp này thường được kiểm tra trong kiểm soát nguồn cùng với phần mã còn lại trong dự án của bạn.
 
-#### Đang cập nhật thùng để có phiên bản mới
+#### Cập nhật để có phiên bản mới của các crate 
 
 Khi bạn *muốn* cập nhật các crate, Cargo cung cấp lệnh `update`, lệnh này sẽ bỏ qua tệp *Cargo.lock* và tìm ra tất cả các phiên bản mới nhất phù hợp với thông số kỹ thuật của bạn trong *Cargo.toml*. Sau đó, Cargo sẽ ghi các phiên bản đó vào tệp *Cargo.lock*. Nếu không, theo mặc định, Cargo sẽ chỉ xem xét các phiên bản lớn hơn 0.8.5 và nhỏ hơn 0.9.0. Nếu crate `rand` đã phát hành hai phiên bản mới 0.8.6 và 0.9.0, bạn sẽ thấy thông tin sau nếu
 bạn đã chạy `cargo update`:
@@ -359,17 +358,17 @@ Hãy bắt đầu sử dụng `rand` để tạo một số để đoán. Bướ
 
 Đầu tiên chúng ta thêm dòng `use rand::Rng;`. Đặc trưng (traits) `Rng` xác định các phương thức mà trình tạo số ngẫu nhiên triển khai và đặc trưng này phải nằm trong phạm vi để chúng ta sử dụng các phương pháp đó. Chương 10 sẽ đề cập chi tiết đến các đặc trưng.
 
-Tiếp theo, chúng ta sẽ thêm hai dòng ở giữa. Trong dòng đầu tiên, chúng ta gọi hàm `rand::thread_rng` cung cấp cho chúng ta bộ tạo số ngẫu nhiên cụ thể mà chúng ta sẽ sử dụng: một bộ tạo nằm trong phạm vi của luồng thực thi hiện tại và được tạo bởi hệ điều hành. Sau đó, chúng ta gọi phương thức `gen_range` trên trình tạo số ngẫu nhiên. Phương pháp này được xác định bởi đặc trưng `Rng` mà chúng ta đã đưa vào phạm vi với câu lệnh `use rand::Rng;`. Các
-Phương thức `gen_range` nhận một biểu thức phạm vi làm đối số và tạo một số ngẫu nhiên trong phạm vi. Loại biểu thức phạm vi chúng ta đang sử dụng ở đây có dạng `start..=end` và bao gồm cả giới hạn trên và dưới, vì vậy chúng ta cần chỉ định `1..=100` để yêu cầu một số từ 1 đến 100.
+Tiếp theo, chúng ta sẽ thêm hai dòng ở giữa. Trong dòng đầu tiên, chúng ta gọi hàm `rand::thread_rng` cung cấp cho chúng ta bộ tạo số ngẫu nhiên cụ thể mà chúng ta sẽ sử dụng: một bộ tạo nằm trong phạm vi của luồng thực thi hiện tại và được tạo bởi hệ điều hành. Sau đó, chúng ta gọi phương thức `gen_range` trên trình tạo số ngẫu nhiên. Phương pháp này được xác định bởi đặc trưng `Rng` mà chúng ta đã đưa vào phạm vi với câu lệnh `use rand::Rng;`. Các Phương thức `gen_range` nhận một biểu thức phạm vi làm đối số và tạo một số ngẫu nhiên trong phạm vi. Loại biểu thức phạm vi chúng ta đang sử dụng ở đây có dạng `start..=end` và bao gồm cả giới hạn trên và dưới, vì vậy chúng ta cần chỉ định `1..=100` để yêu cầu một số từ 1 đến 100.
 
 > Lưu ý: 
-> Bạn sẽ không chỉ biết nên sử dụng đặc điểm nào, phương pháp và chức năng nào để gọi từ crate,
-> vì vậy mỗi crate đều có tài liệu hướng dẫn sử dụng. Một tính năng thú vị khác của Cargo là 
-> chạy `cargo doc > --open` lệnh sẽ xây dựng tài liệu được cung cấp bởi tất cả các phụ thuộc
-> ngay trên máy tính của bạn và mở nó trong trình duyệt. Nếu bạn quan tâm đến các chức năng của
-> crate `rand`, bạn có thể chạy `cargo doc --open` và nhấp vào `rand` trong khung bên trái.
+> Bạn sẽ không chỉ biết nên sử dụng đặc điểm nào, phương pháp và chức năng nào 
+> để gọi từ crate, vì vậy mỗi crate đều có tài liệu hướng dẫn sử dụng. Một tính 
+> năng thú vị khác của Cargo là chạy lệnh `cargo doc > --open` sẽ dựng tài liệu 
+> được cung cấp bởi tất cả các phụ thuộc ngay trên máy tính của bạn và mở nó 
+> trong trình duyệt. Nếu bạn quan tâm đến các chức năng của crate `rand`, bạn 
+> có thể chạy `cargo doc --open` và nhấp vào `rand` trong khung bên trái.
 
-Dòng thêm mới thứ hai in số bí mật. Điều này hữu ích khi chúng ta đang phát triển chương trình để có thể kiểm tra, nhưng chúng ta sẽ xóa nó khỏi phiên bản cuối cùng. Chương trình sẽ không phải là trò chơi nếu in câu trả lời ngay khi nó bắt đầu!
+Dòng mới thêm thứ hai in ra Số Bí Mật. Điều này hữu ích khi chúng ta đang phát triển chương trình để có thể kiểm tra, nhưng chúng ta sẽ xóa nó khỏi phiên bản cuối cùng. Chương trình sẽ không phải là trò chơi nếu in câu trả lời ngay khi nó bắt đầu!
 
 Hãy thử chạy chương trình một vài lần:
 
@@ -402,11 +401,11 @@ Please input your guess.
 You guessed: 5
 ```
 
-Bạn sẽ nhận được các số ngẫu nhiên khác nhau và tất cả chúng phải là các số nằm giữa 1 và 100. Bạn đã làm rất tốt !
+Bạn sẽ nhận được các số ngẫu nhiên khác nhau và tất cả chúng là các số nằm giữa 1 và 100. Bạn đã làm rất tốt !
 
 ## So sánh số dự đoán với số bí mật
 
-Bây giờ chúng ta có đầu vào của người dùng và một số ngẫu nhiên, chúng ta có thể so sánh chúng. Bước này được hiển thị trong Listing 2-4. Lưu ý rằng mã này sẽ chưa biên dịch được, chúng ta sẽ giải thích vì sao.
+Bây giờ chúng ta có dữ liệu người dùng nhập vào và một số ngẫu nhiên, chúng ta có thể so sánh chúng. Bước này được hiển thị trong Listing 2-4. Lưu ý rằng mã này sẽ chưa biên dịch được, chúng ta sẽ xem xét vì sao.
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -418,13 +417,13 @@ Bây giờ chúng ta có đầu vào của người dùng và một số ngẫu 
 
 Trước tiên, chúng ta thêm một câu lệnh `use` khác, đưa một kiểu có tên là `std::cmp::Ordering` vào sử dụng từ thư viện chuẩn. Kiểu `Ordering` là một enum khác và có các biến thể `Less`, `Greater` và `Equal`. Đây là ba kết quả có thể xảy ra khi bạn so sánh hai giá trị.
 
-Sau đó, chúng ta thêm năm dòng mới ở dưới cùng sử dụng kiểu `Ordering`. Phương thức `cmp` so sánh hai giá trị và có thể được dùng để so sánh bất kỳ thứ gì có thể so. Nó tham chiếu đến bất cứ thứ gì bạn muốn so sánh: ở đây nó đang so sánh `guess` với `secret_number`. Sau đó, nó trả về một biến thể của enum `Ordering` chúng ta đã đưa vào chương trình với câu lệnh `use`. Chúng ta sử dụng biểu thức [`match`][match]<!-- ignore --> để quyết định bước tiếp theo dựa trên giá trị trả về của `Ordering` từ lệnh gọi tới `cmp` với các giá trị trong `guess` và `secret_number`.
+Sau đó, chúng ta thêm năm dòng mới ở dưới cùng sử dụng kiểu `Ordering`. Phương thức `cmp` so sánh hai giá trị và có thể được dùng để so sánh bất kỳ thứ gì có thể so. Nó tham chiếu đến bất cứ thứ gì bạn muốn so sánh: ở đây nó đang so sánh `guess` với `secret_number`. Sau đó, nó trả về một kiểu enum `Ordering` chúng ta đã đưa vào chương trình với câu lệnh `use`. Từ lệnh gọi tới `cmp` với các giá trị trong `guess` và `secret_number`, chúng ta sử dụng biểu thức [`match`][match]<!-- ignore --> để quyết định bước tiếp theo dựa trên giá trị trả về của `Ordering`.
 
-Biểu thức `match` được tạo thành từ *các rẽ nhánh (arms)*. Một nhánh bao gồm một *mẫu (pattern)* để so khớp và mã sẽ được chạy nếu giá trị được cung cấp cho `match` phù hợp với mẫu của nhánh đó. Rust lấy giá trị được cung cấp cho `match` và lần lượt xem qua mẫu của từng nhánh. Các mẫu và cấu trúc `match` là các tính năng mạnh mẽ của Rust: chúng cho phép bạn thể hiện nhiều tình huống mà mã của bạn có thể gặp phải và chúng đảm bảo bạn xử lý tất cả chúng. Các tính năng này sẽ được đề cập chi tiết tương ứng trong Chương 6 và Chương 18.
+Biểu thức `match` được tạo thành từ *các nhánh rẽ (arms)*. Một nhánh bao gồm một *mẫu (pattern)* để so khớp và mã sẽ được chạy nếu giá trị được cung cấp cho `match` phù hợp với mẫu của nhánh đó. Rust lấy giá trị được cung cấp cho `match` và lần lượt xem qua mẫu của từng nhánh. Các mẫu và cấu trúc `match` là những tính năng mạnh mẽ của Rust: chúng cho phép bạn thể hiện nhiều tình huống mà mã của bạn có thể gặp phải và chúng đảm bảo bạn xử lý tất cả chúng. Các tính năng này sẽ được xem xét chi tiết tương ứng trong Chương 6 và Chương 18.
 
 Hãy cùng xem một ví dụ với biểu thức `match` mà chúng tôi sử dụng ở đây. Giả sử người dùng đã đoán 50 và số bí mật được tạo ngẫu nhiên lần này là 38.
 
-Khi mã so sánh 50 với 38, vì 50 lớn hơn 38 nên phương thức `cmp` sẽ trả về `Ordering::Greater`. Biểu thức `match` nhận giá trị `Ordering::Greater` và bắt đầu kiểm tra mẫu của từng nhánh. Nó tìm ở mẫu của nhánh đầu tiên, `Ordering::Less`, và thấy rằng giá trị `Ordering::Greater` không khớp với `Ordering::Less`, vì vậy nó bỏ qua mã trong nhánh đó và chuyển sang nhánh tiếp theo. Mẫu của nhánh tiếp theo là `Ordering::Greater`, mà mẫu này *khớp* với `Ordering::Greater`! Mã được liên kết trong nhánh đó sẽ thực thi và in chuỗi `Too big!` ra màn hình. Biểu thức `match` kết thúc sau lần so thành công đầu tiên, do đó trong trường hợp này, nó sẽ không xem xét nhánh cuối cùng.
+Khi mã so sánh 50 với 38, vì 50 lớn hơn 38 nên phương thức `cmp` sẽ trả về `Ordering::Greater`. Biểu thức `match` nhận giá trị `Ordering::Greater` và bắt đầu kiểm tra mẫu của từng nhánh. Nó tìm ở mẫu của nhánh đầu tiên `Ordering::Less`, và thấy rằng giá trị `Ordering::Greater` không khớp với `Ordering::Less`, vì vậy nó bỏ qua nhánh đó và chuyển sang nhánh tiếp theo. Mẫu của nhánh tiếp theo là `Ordering::Greater`, mẫu này *khớp* với `Ordering::Greater`! Mã được liên kết trong nhánh này sẽ thực thi và in ra màn hình chuỗi `Too big!`. Biểu thức `match` kết thúc sau lần so thành công đầu tiên, do đó trong trường hợp này, nó sẽ không xem xét nhánh cuối cùng.
 
 Tuy nhiên, mã trong Listing 2-4 vẫn chưa biên dịch được. Hãy thử xem nào:
 
@@ -437,9 +436,9 @@ anchor or snip comments
 {{#include ../listings/ch02-guessing-game-tutorial/listing-02-04/output.txt}}
 ```
 
-Nội dung chính của lỗi nói rằng *mismatched types*. Rust có một hệ thống kiểu dữ liệu tĩnh, mạnh mẽ. Tuy nhiên, nó cũng có kiểu suy luận. Khi chúng ta viết `let mut guess = String::new()`, Rust có thể suy luận rằng `guess` phải là một `String` và không bắt chúng ta khai báo kiểu dữ liệu trước. Mặt khác, `secret_number` là một biến kiểu số. Một số kiểu dữ liệu dạng số của Rust có thể có giá trị từ 1 đến 100, `i32`: số 32 bit; `u32`: một số 32 bit không dấu; `i64`: một số 64 bit; cũng như những người khác. Trừ khi được quy định khác, Rust mặc định là `secret_number` là kiểu `i32`, trừ khi bạn thêm thông tin kiểu dữ liệu ở nơi khác sẽ khiến Rust suy ra một kiểu dữ liệu số khác. Nguyên nhân của lỗi là Rust không thực hiện phép so sánh giữa một dữ liệu kiểu chuỗi kí tự và một dữ liệu kiểu số.
+Nội dung chính của lỗi nói rằng *mismatched types*. Rust có một hệ thống kiểu dữ liệu tĩnh, mạnh mẽ. Tuy nhiên, nó cũng có khả năng suy luận. Khi chúng ta viết `let mut guess = String::new()`, Rust có thể suy luận rằng `guess` phải là một `String` và không bắt chúng ta khai báo kiểu dữ liệu trước. Mặt khác, `secret_number` là một biến kiểu số có giá trị từ 1 đến 100. Một số kiểu dữ liệu dạng số của Rust có thể là `i32`: số 32 bit; `u32`: một số 32 bit không dấu; `i64`: một số 64 bit. Trừ khi được quy định khác, Rust mặc định là `secret_number` là kiểu `i32`, trừ khi bạn thêm thông tin kiểu dữ liệu ở nơi khác sẽ khiến Rust suy ra một kiểu dữ liệu số khác. Nguyên nhân của lỗi là Rust không thực hiện phép so sánh giữa một dữ liệu kiểu chuỗi kí tự với một dữ liệu kiểu số.
 
-Cuối cùng, chúng ta chuyển đổi `String` mà chương trình đọc dưới dạng đầu vào thành một kiểu số để chúng ta có thể so sánh nó với số bí mật. Chúng ta làm điều đó bằng cách thêm dòng này vào thân hàm `main`:
+Cuối cùng, chúng ta chuyển đổi `String` mà chương trình đọc dưới dạng đầu vào thành một kiểu số để chúng ta có thể so sánh nó với Số Bí Mật. Chúng ta làm điều đó bằng cách thêm dòng này vào thân hàm `main`:
 
 <span class="filename">Filename: src/main.rs</span>
 
@@ -457,10 +456,9 @@ Chúng ta tạo một biến có tên `guess`. Mà khoan đã, chẳng phải ch
 
 Chúng ta gắn biến mới này với biểu thức `guess.trim().parse()`. Biến `guess` trong biểu thức đề cập đến biến `guess` ban đầu chứa dữ liệu được nhập vào dưới dạng một chuỗi. Phương thức `trim` của `String` sẽ loại bỏ mọi khoảng trắng ở đầu và cuối, điều mà chúng ta phải làm để có thể so sánh chuỗi với `u32`, chuỗi này chỉ có thể chứa dữ liệu dạng số. Người dùng phải nhập dự đoán của họ và nhấn <span class="keystroke">enter</span> để cho hàm `read_line` nhận dữ liệu, thao tác này sẽ thêm một ký tự xuống dòng vào chuỗi. Ví dụ: nếu người dùng nhập <span class="keystroke">5</span> và nhấn <span class="keystroke">enter</span>, `guess` trông như thế này: `5\n`. Kí tự `\n` đại diện cho “dòng mới”. (Trên Windows, nhấn <span class="keystroke">enter</span> dẫn đến xuống dòng và đừa con trỏ về đầu dòng, `\r\n`.) Phương thức `trim` loại bỏ `\n` hoặc `\r\ n`, làm cho kết quả chỉ còn duy nhất giá trị `5`.
 
-[Phương thức `parse` trên chuỗi][parse] chuyển đổi một chuỗi thành một kiểu khác. Ở đây, chúng ta sử dụng nó để chuyển đổi từ một chuỗi kí tự thành một số. Chúng ta cần phải cho Rust biết lkiểu số chính xác mà chúng ta muốn bằng cách sử dụng `let guess: u32`. Dấu hai chấm (`:`) sau `guess` cho Rust biết rằng chúng ta sẽ khai báo kiểu dữ liệu. Rust có một vài kiểu số tích hợp sẵn; `u32` ở đây là một số nguyên 32 bit không dấu.
-Đó là lựa chọn mặc định phù hợp với một số dương nhỏ. Bạn sẽ tìm hiểu về các loại số khác trong [Chương 3][integers]<!-- ignore -->.
+[Phương thức `parse` trên chuỗi][parse] chuyển đổi một chuỗi thành một kiểu khác. Ở đây, chúng ta sử dụng nó để chuyển đổi từ một chuỗi kí tự thành một số. Chúng ta cần phải cho Rust biết kiểu số chính xác mà chúng ta muốn bằng cách sử dụng `let guess: u32`. Dấu hai chấm (`:`) sau `guess` cho Rust biết rằng chúng ta sẽ khai báo kiểu dữ liệu. Rust có một vài kiểu số tích hợp sẵn; `u32` ở đây là một số nguyên 32 bit không dấu. Đó là lựa chọn mặc định phù hợp với một số dương nhỏ. Bạn sẽ tìm hiểu về các loại số khác trong [Chương 3][integers]<!-- ignore -->.
 
-Ngoài ra, khai báo `u32` trong chương trình ví dụ này và sự so sánh với `secret_number` có nghĩa là Rust sẽ suy ra rằng, như vậy `secret_number` phải là một biến có kiểu `u32`. Vì vậy, bây giờ phép so sánh sẽ là so sánh giữa hai giá trị của cùng một kiểu !
+Ngoài ra, khai báo `u32` trong chương trình ví dụ này và sự so sánh với `secret_number` có nghĩa là Rust sẽ suy ra rằng, như vậy `secret_number` phải là một biến có kiểu `u32`. Vì vậy, bây giờ phép so sánh sẽ là so sánh giữa hai giá trị có cùng một kiểu !
 
 Phương thức `parse` sẽ chỉ hoạt động trên các ký tự có thể được chuyển đổi thành số một cách hợp lý và do đó có thể dễ dàng gây ra lỗi. Ví dụ, nếu chuỗi chứa `A👍%`, sẽ không có cách nào để chuyển đổi nó thành một số. Vì phép so sánh có thể không thành công, cho nên phương thức `parse` trả về kiểu `Result`, giống như cách mà phương thức `read_line` đã làm (đã thảo luận trước đó trong [“Handling Potential Failure with `Result`”] (#handling-potential-failure-with-result)<!-- ignore-->). 
 
@@ -619,7 +617,7 @@ Tuyệt vời! Với một tinh chỉnh nhỏ cuối cùng, chúng ta sẽ kết
 
 ## Tóm tắt
 
-Dự án này là một cách thực tế để giới thiệu cho bạn nhiều khái niệm Rust mới:
+Dự án này là một cách thực tế để giới thiệu cho bạn nhiều khái niệm mới của Rust :
 `let`, `match`, các hàm, cách sử dụng các crate bên ngoài, v.v. Ở phần tiếp theo trong một vài chương, bạn sẽ tìm hiểu chi tiết hơn về các khái niệm này. Chương 3 bao gồm các khái niệm mà hầu hết các ngôn ngữ lập trình đều có, chẳng hạn như các biến, các kiểu dữ liệu và các hàm, đồng thời chỉ ra cách sử dụng chúng trong Rust. Chương 4 khám phá quyền sở hữu, một tính năng làm cho Rust khác biệt với các ngôn ngữ khác. Chương 5 thảo luận về cấu trúc và cú pháp của phương thức, và Chương 6 giải thích cách thức hoạt động của enums.
 
 

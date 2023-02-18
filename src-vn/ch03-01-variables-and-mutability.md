@@ -27,6 +27,7 @@ Bạn nhận được thông báo lỗi `` cannot assign twice to immutable vari
 Điều quan trọng là chúng ta gặp phải lỗi trong lúc biên dịch khi cố gắng thay đổi một giá trị được khai báo là không thay đổi vì chính tình huống này có thể dẫn đến lỗi. Nếu một phần trong mã của chúng ta hoạt động dựa trên giả định rằng một giá trị sẽ không bao giờ thay đổi và một phần khác trong mã của chúng ta sẽ thay đổi giá trị đó, thì có thể phần đầu tiên của mã sẽ không thực hiện những gì nó được thiết kế để làm. Nguyên nhân của loại lỗi này có thể khó theo dõi sau khi xảy ra trong thực tế, đặc biệt là khi đoạn mã thứ hai chỉ *đôi khi* thay đổi giá trị. Trình biên dịch Rust đảm bảo rằng khi bạn khai báo rằng một giá trị sẽ không thay đổi, thì nó thực sự sẽ không thay đổi, vì vậy bạn không cần phải tự mình theo dõi nó. Do đó, mã của bạn sẽ hợp lý hơn.
 
 Nhưng khả năng thay đổi có thể rất hữu ích và có thể giúp viết mã thuận tiện hơn.
+
 Mặc dù các biến là bất biến theo mặc định, nhưng bạn có thể khiến cho chúng có thể thay đổi được bằng cách thêm `mut` vào trước tên biến như bạn đã làm trong [Chương 2][storing-values-with-variables]<!-- ignore -->. Việc thêm `mut` cũng truyền tải ý định tới những người đọc mã trong tương lai bằng cách chỉ ra rằng các phần khác của mã sẽ thay đổi giá trị của biến này.
 
 Ví dụ: hãy thay đổi *src/main.rs* như sau:
@@ -68,7 +69,7 @@ Các hằng có giá trị trong toàn bộ thời gian chương trình chạy, 
 
 Việc đặt tên cho các giá trị được mã hóa cứng được sử dụng trong toàn bộ chương trình của bạn dưới dạng hằng số rất hữu ích trong việc truyền đạt ý nghĩa của giá trị đó cho những người bảo trì mã trong tương lai. Nó cũng hữu ích khi chỉ có một vị trí trong mã của bạn mà bạn sẽ cần thay đổi nếu giá trị mã hóa cứng cần được cập nhật trong tương lai.
 
-### Đổ bóng
+### Che khuất
 
 Như bạn đã thấy trong phần hướng dẫn trò chơi đoán số ở [Chương 2][comparing-the-guess-to-the-secret-number]<!-- ignore -->, bạn có thể khai báo một biến mới có cùng tên với biến trước đó. Rustaceans nói rằng biến đầu tiên bị *che khuất (shadowed)* bởi biến thứ hai, có nghĩa là biến thứ hai là thứ mà trình biên dịch sẽ thấy khi bạn sử dụng tên của biến.
 Trên thực tế, biến thứ hai làm lu mờ biến thứ nhất, sử dụng chính nó cho bất kỳ tham chiếu nào cho đến khi chính nó bị che khuất hoặc kết thúc khối lệnh.

@@ -2,17 +2,19 @@
 
 Bước đầu tiên là cài đặt Rust. Chúng ta sẽ tải xuống Rust thông qua `rustup`, một công cụ dòng lệnh để quản lý các phiên bản Rust và các công cụ liên quan. Bạn sẽ cần kết nối internet để tải xuống.
 
-> Lưu ý: Nếu bạn không muốn sử dụng `rustup` vì lý do nào đó, vui lòng xem trang [Phương pháp cài đặt Rust khác][otherinstall] để có thêm lựa chọn.
+> Lưu ý: Nếu bạn không muốn sử dụng `rustup` vì lý do nào đó, vui lòng xem 
+> trang [Phương pháp cài đặt Rust khác][otherinstall] để có thêm lựa chọn.
 
 Các bước sau đây cài đặt phiên bản ổn định mới nhất của trình biên dịch Rust.
 Sự đảm bảo về độ ổn định của Rust đảm bảo rằng tất cả các ví dụ trong cuốn sách biên dịch sẽ tiếp tục biên dịch với các phiên bản Rust mới hơn. Đầu ra có thể hơi khác nhau giữa các phiên bản vì Rust thường cải thiện các thông báo lỗi và cảnh báo. Nói cách khác, mọi phiên bản Rust mới hơn, ổn định hơn mà bạn cài đặt bằng các bước này sẽ hoạt động như mong đợi trong nội dung của cuốn sách này.
 
 > ### Ký hiệu dòng lệnh
 >
-> Trong chương này và xuyên suốt cuốn sách, chúng tôi sẽ chỉ ra một số lệnh được sử dụng trong
-> thiết bị đầu cuối. Tất cả các dòng mà bạn nên nhập trong thiết bị đầu cuối đều bắt đầu bằng `$`. 
-> Bạn không cần gõ ký tự `$`; đó là dấu nhắc dòng lệnh được hiển thị cho cho biết điểm bắt đầu 
-> của mỗi lệnh. Các dòng không bắt đầu bằng `$` thường hiển thị kết xuất đầu ra của lệnh trước đó. 
+> Trong chương này và xuyên suốt cuốn sách, chúng tôi sẽ chỉ ra một số lệnh 
+> được sử dụng trong thiết bị đầu cuối. Tất cả các dòng mà bạn nên nhập trong 
+> thiết bị đầu cuối đều bắt đầu bằng `$`. Bạn không cần gõ ký tự `$`; đó là dấu 
+> nhắc dòng lệnh được hiển thị cho cho biết điểm bắt đầu của mỗi lệnh. Các dòng 
+> không bắt đầu bằng `$` thường hiển thị kết xuất đầu ra của lệnh trước đó. 
 > Ngoài ra, dành riêng cho PowerShell các ví dụ sẽ sử dụng `>` thay vì `$`.
 
 ### Cài đặt `rustup` trên Linux hoặc macOS
@@ -42,8 +44,7 @@ Người dùng Linux nói chung nên cài đặt GCC hoặc Clang, theo chỉ d�
 
 Trên Windows, hãy truy cập [https://www.rust-lang.org/tools/install][install] và làm theo hướng dẫn cài đặt Rust. Tại một số thời điểm trong quá trình cài đặt, bạn sẽ nhận được thông báo rằng bạn sẽ cần các công cụ *build* MSVC cho Visual Studio 2013 trở lên.
 
-Để có được các công cụ *build*, bạn cần cài đặt [Visual Studio 2022][studio trực quan]. 
-Khi được hỏi loại công việc nào sẽ cài đặt, bao gồm:
+Để có được các công cụ *build*, bạn cần cài đặt [Visual Studio 2022][studio trực quan]. Khi được hỏi loại công việc nào sẽ cài đặt, bao gồm:
 
 * “Desktop Development with C++”
 * The Windows 10 or 11 SDK
@@ -91,8 +92,7 @@ Nếu tất cả đều đúng và Rust vẫn không hoạt động, có những
 
 ### Cập nhật và Gỡ cài đặt
 
-Khi Rust được cài đặt qua `rustup`, rất dễ dàng cho việc cập nhật lên phiên bản mới được phát hành. 
-Từ cửa sổ dòng lệnh của bạn, hãy chạy lệnh cập nhật như sau:
+Khi Rust được cài đặt qua `rustup`, rất dễ dàng cho việc cập nhật lên phiên bản mới được phát hành. Từ cửa sổ dòng lệnh của bạn, hãy chạy lệnh cập nhật như sau:
 
 ```console
 $ rustup update
