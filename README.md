@@ -24,9 +24,7 @@ Xem [Release][releases] để tải xuống chỉ phần mã lệnh của tất 
 
 ## Các yêu cầu để nhận được cuốn sách hoàn chỉnh
 
-Dể hoàn chỉnh dàn trang cho cuốn sách, bạn cần [mdBook], tốt nhất là phiên bản
-giống với phiên bản mà  rust-lang/rust sử dụng trong tệp này [this
-file][rust-mdbook]. Để tải về, theo đường dẫn dưới đây:
+Dể hoàn thành việc dàn trang cho cuốn sách, bạn cần [mdBook], tốt nhất là phiên bản giống với phiên bản mà rust-lang/rust sử dụng trong [tệp này][rust-mdbook]. Để tải về, dùng đường dẫn dưới đây:
 
 [mdBook]: https://github.com/rust-lang-nursery/mdBook
 [rust-mdbook]: https://github.com/rust-lang/rust/blob/master/src/tools/rustbook/Cargo.toml
@@ -35,9 +33,9 @@ file][rust-mdbook]. Để tải về, theo đường dẫn dưới đây:
 $ cargo install mdbook --version <version_num>
 ```
 
-## Dựng
+## Dàn trang
 
-Để dựng sách hoàn chỉnh, gõ lệnh sau:
+Để dàn trang hoàn chỉnh, gõ lệnh sau:
 
 ```bash
 $ mdbook build
@@ -61,16 +59,16 @@ $ Start-Process "chrome.exe" .\book\index.html  # Windows (PowerShell)
 $ start chrome.exe .\book\index.html            # Windows (Cmd)
 ```
 
-Để kiểm thử:
+Để kiểm tra lỗi:
 
 ```bash
 $ mdbook test
 ```
 
-## Đóng góp
+## Hỗ trợ
 
 Chúng tôi cần sự giúp đỡ của các bạn! Vui lòng xem [CONTRIBUTING.md][contrib] để
-tìm hiểu về các hình thức hỗ trợ mà chúng tôi đang tìm kiếm.
+tìm hiểu về các công tác hỗ trợ mà chúng tôi cần.
 
 [contrib]: https://github.com/rust-lang/book/blob/main/CONTRIBUTING.md
 
@@ -87,11 +85,12 @@ hàng tháng hoặc hàng năm. Cảm ơn vì sự kiên nhẫn của bạn!
 
 ### Các bản dịch
 
-Chúng tôi rất vui khi được giúp đỡ để dịch cuốn sách! Xem nhãn [Translation] để
-tham gia vào các nỗ lực dịch thuật hiện đang được tiến hành. Mở một vấn đề mới
-để bắt đầu làm việc với một ngôn ngữ mới! Chúng tôi đang chờ hỗ trợ của
-[mdbook][mdbook support] cho cơ chế đa ngôn ngữ trước khi chúng tôi hợp nhất bất
-kỳ ngôn ngữ nào vào, nhưng bạn cứ thoải mái mà bắt đầu!
+Chúng tôi rất vui khi được giúp đỡ để dịch cuốn sách! Xem nhãn
+[Translations][Translations] để tham gia vào các nỗ lực dịch thuật hiện đang
+được tiến hành. Để bắt đầu dịch sang một ngôn ngữ mới, hãy tạo một vấn đề
+mới! Chúng tôi đang chờ hỗ trợ của [mdbook][mdbook support] cho cơ chế đa ngôn
+ngữ trước khi chúng tôi hợp nhất bất kỳ ngôn ngữ nào vào, nhưng bạn cứ thoải mái
+mà bắt đầu!
 
 [Translations]: https://github.com/rust-lang/book/issues?q=is%3Aopen+is%3Aissue+label%3ATranslations
 [mdbook support]: https://github.com/rust-lang-nursery/mdBook/issues/5
