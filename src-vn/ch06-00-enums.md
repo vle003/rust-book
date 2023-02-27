@@ -1,0 +1,3 @@
+# Enums và Khớp mẫu
+
+Trong chương này, chúng ta sẽ xem xét *enumerations*, còn được gọi là *enums*. Enums cho phép bạn định nghĩa một kiểu dữ liệu bằng cách liệt kê các *biến thể* có thể có của nó. Trước tiên, chúng ta sẽ định nghĩa và sử dụng một enum để chỉ ra cách một enum có thể mã hóa ý nghĩa cùng với dữ liệu. Tiếp theo, chúng ta sẽ khám phá một enum đặc biệt hữu ích, được gọi là `Option`, thể hiện một giá trị có thể là thứ gì đó hoặc không có gì. Sau đó, chúng ta sẽ xem cách so khớp mẫu trong biểu thức `match` giúp dễ dàng chạy các mã khác nhau cho các giá trị khác nhau của một enum. Cuối cùng, chúng ta sẽ giới thiệu cách cấu trúc `if let` là một thành ngữ ngắn gọn và thuận tiện khác có sẵn để xử lý các enum trong mã của bạn.
